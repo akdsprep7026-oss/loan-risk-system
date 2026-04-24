@@ -90,6 +90,7 @@ credit = st.slider("📊 Credit Score", 300, 850, 650)
 # =========================================================
 input_df = pd.DataFrame([{
     "Income": income,
+    
     "Age": age,
     "LoanAmount": loan,
     "CreditScore": credit
