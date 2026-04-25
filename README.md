@@ -3,7 +3,7 @@
 An AI-powered web application that predicts loan approval probabilities using a **Random Forest Classifier**. Built with Python and Streamlit, this app evaluates applicant details, calculates risk scores, estimates EMIs, and provides transparent, rule-based explanations for its financial decisions.
 
 # Live Demo
-*[Insert your Streamlit Cloud app link here, e.g., https://your-app-url.streamlit.app/]*
+https://38fymtndfuwbvgruajvxlu.streamlit.app/
 
 # Features
 
