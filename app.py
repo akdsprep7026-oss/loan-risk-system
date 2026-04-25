@@ -8,12 +8,12 @@ from sklearn.metrics import accuracy_score
 
 # =========================================================
 # PAGE CONFIG
-# =========================================================
+
 st.set_page_config(page_title="Loan Approval System", layout="centered")
 
 # =========================================================
 # SYNTHETIC DATA (REALISTIC SIMULATION)
-# =========================================================
+
 @st.cache_data
 def create_data():
     np.random.seed(42)
@@ -39,7 +39,7 @@ df = create_data()
 
 # =========================================================
 # TRAIN MODEL
-# =========================================================
+
 X = df.drop("Approved", axis=1)
 y = df["Approved"]
 
@@ -52,13 +52,13 @@ model.fit(X_train, y_train)
 
 # =========================================================
 # EVALUATION
-# =========================================================
+
 preds = model.predict(X_test)
 acc = accuracy_score(y_test, preds)
 
 # =========================================================
 # HELPER FUNCTIONS
-# =========================================================
+
 def calculate_risk(prob):
     return round((1 - prob) * 100, 2)
 
@@ -69,7 +69,7 @@ def calculate_emi(loan, rate=0.1, years=2):
 
 # =========================================================
 # UI HEADER
-# =========================================================
+
 st.title("🏦 Smart Loan Approval System")
 st.write(f"Model Accuracy: {round(acc,2)}")
 
@@ -77,7 +77,7 @@ st.markdown("---")
 
 # =========================================================
 # USER INPUT
-# =========================================================
+
 st.subheader("📋 Enter Applicant Details")
 
 income = st.number_input("💰 Income (₹)", value=60000)
@@ -87,7 +87,7 @@ credit = st.slider("📊 Credit Score", 300, 850, 650)
 
 # =========================================================
 # PREDICTION
-# =========================================================
+
 input_df = pd.DataFrame([{
     "Income": income,
     
@@ -117,8 +117,8 @@ if st.button("🔍 Evaluate Loan"):
     st.progress(int(prob * 100))
 
     # =====================================================
-    # BUSINESS LOGIC (REAL DECISION ENGINE)
-    # =====================================================
+    # BUSINESS LOGIC (DECISION ENGINE)
+    
     reasons = []
 
     if income < 40000:
@@ -137,7 +137,7 @@ if st.button("🔍 Evaluate Loan"):
 
     # =====================================================
     # FINAL DECISION
-    # =====================================================
+    
     if risk < 40 and len(reasons) == 0:
         st.success("✅ Loan Approved (Low Risk)")
 
@@ -149,7 +149,7 @@ if st.button("🔍 Evaluate Loan"):
 
     # =====================================================
     # EXPLANATION
-    # =====================================================
+   
     if reasons:
         st.subheader("⚠️ Reasons for Decision")
         for r in reasons:
