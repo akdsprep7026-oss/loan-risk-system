@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 st.set_page_config(page_title="Loan Approval System", layout="centered")
 
 # =========================================================
-# SYNTHETIC DATA (REALISTIC SIMULATION)
+# SYNTHETIC DATA (FOR REALISTIC SIMULATION)
 
 @st.cache_data
 def create_data():
@@ -38,7 +38,7 @@ def create_data():
 df = create_data()
 
 # =========================================================
-# TRAIN MODEL
+# TRAINING MODEL
 
 X = df.drop("Approved", axis=1)
 y = df["Approved"]
